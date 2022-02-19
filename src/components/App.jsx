@@ -10,26 +10,15 @@ function App() {
   function handleChange(event) {
     const { name, value } = event.target;
 
-    setContact(prevValue => {
-      if (name === "fName") {
-        return {
-          fName: value,
-          lName: prevValue.lName,
-          email: prevValue.email
-        };
-      } else if (name === "lName") {
-        return {
-          fName: prevValue.fName,
-          lName: value,
-          email: prevValue.email
-        };
-      } else if (name === "email") {
-        return {
-          fName: prevValue.fName,
-          lName: prevValue.lName,
-          email: value
-        };
-      }
+    setContact((prevValue) => {
+      return {
+        //set the prevValue add in array with spread operator
+        // ... = spread operator
+        ...prevValue,
+        // set the new value
+        // [name] - to make it set as same key not as new key if don't have []
+        [name]: value
+      };
     });
   }
 
